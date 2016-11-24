@@ -12,9 +12,17 @@ export default env =>  {
         output: {
             filename: 'bundle.js',
             path: resolve('dist'),
-            publicPath: '/dist/',
         },
         devtool: ifProd('source-map', 'eval'),
+        module: {
+            loaders: [
+                {
+                    test: /\.js$/,
+                    loaders: ['babel-loader'],
+                    exclude: /node_modules/
+                },
+            ],
+        },
         plugins: [
             new HtmlWebpackPlugin({
                 template: 'index.html'
