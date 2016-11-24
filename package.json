@@ -1,0 +1,16 @@
+{
+  "name": "job_track",
+  "version": "0.0.1",
+  "description": "Track your job applications",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "rimraf dist",
+    "build": "webpack --env.prod -p",
+    "prebuild:dev": "rimraf dist",
+    "build:dev": "webpack --env.dev",
+    "start": "http-server",
+    "dev": "webpack-dev-server --env.dev",
+  },
+  "author": "Eric Ren",
+  "license": "ISC"
+}
