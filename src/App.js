@@ -3,7 +3,8 @@
  */
 
 import React, { Component } from 'react'
-
+import Counter from './Counter'
+import Layout from './Layout'
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
 // only synchronous routes are hot reloaded, and
@@ -11,14 +12,14 @@ import React, { Component } from 'react'
 // You can ignore this warning. For details, see:
 // https://github.com/reactjs/react-router/issues/2182
 
-const e = React.createElement
 
 export default class App extends Component {
 
     render() {
         return (
-           e('div', null,  'a', e('h1', null, 'dsfdfs'))
-
-        )
-    }
+            <Layout>
+                <Counter />
+            </Layout>
+        );
+    };
 }
