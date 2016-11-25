@@ -1,28 +1,29 @@
 const {resolve} = require('path')
 const webpack = require('webpack')
-const webpackValidator = require('webpack-validator')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-
+const webpackValidator = require('webpack-validator')
 const {getIfUtils} = require('webpack-config-utils')
 
+
 module.exports = env =>  {
-    const {ifProd} = getIfUtils(env)
+    const {ifProd, ifNotProd} = getIfUtils(env)
+
 
     const config = webpackValidator({
         context: resolve('src'),
         entry: [
             'react-hot-loader/patch',
-            'webpack-dev-server/client?http://localhost:3000',
+            'webpack-dev-server/client?http://localhost:4000',
             'webpack/hot/only-dev-server',
-            './bootstrap.js'
+            './bootstrap'
         ],
 
         output: {
             filename: 'bundle.js',
             path: resolve('dist'),
         },
-        devtool: 'inline-source-map',
+        devtool: ifProd('source-map', 'eval'),
         module: {
             loaders: [
                 {
@@ -40,7 +41,7 @@ module.exports = env =>  {
             })
         ],
         devServer: {
-            port: 3000,
+            port: 4000,
             hot: true
         }
     })

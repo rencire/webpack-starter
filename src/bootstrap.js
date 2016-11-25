@@ -1,31 +1,27 @@
 /* eslint no-console:0 */
 
-import { AppContainer } from 'react-hot-loader'
-import React from 'react'
-import ReactDom from 'react-dom'
-import App from './App'
+import {onLoad} from './App'
 
-const e = React.createElement
-
-const rootEl = document.getElementById('root')
-
-ReactDom.render(
-    <AppContainer>
-        <App />
-    </AppContainer>,
-    rootEl
-);
-
+// this is only relevant when using `hot` mode with webpack
+// special thanks to Eric Clemmons: https://github.com/ericclemmons/webpack-hot-server-example
+const reloading = document.readyState === 'complete'
 if (module.hot) {
-  module.hot.accept('./App', (err) => {
-      console.log('in hot accept')
-      const NextApp = require('./App').default;
-      ReactDOM.render(
-          <AppContainer>
-              <NextApp />
-          </AppContainer>,
-          rootEl
-      );
+    module.hot.accept(function(err) {
+        console.log('❌  HMR Error:', err)
     })
+    if (reloading) {
+        console.log('🔁  HMR Reloading.')
+        onLoad()
+    } else {
+        console.info('✅  HMR Enabled.')
+        bootstrap()
+    }
+} else {
+    console.info('❌  HMR Not Supported.')
+    bootstrap()
 }
 
+function bootstrap() {
+    window.addEventListener('load', onLoad)
+    window.addEventListener('hashchange', onLoad)
+}
