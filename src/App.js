@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react'
 import Counter from './Counter'
+import Layout from './Layout'
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
 // only synchronous routes are hot reloaded, and
@@ -11,16 +12,14 @@ import Counter from './Counter'
 // You can ignore this warning. For details, see:
 // https://github.com/reactjs/react-router/issues/2182
 
-const e = React.createElement
 
 export default class App extends Component {
 
     render() {
         return (
-            <div style={{fontSize: 13}}>
-            React tesdsfdft exampfdfsfsds adsfdf.
+            <Layout>
                 <Counter />
-            </div>
+            </Layout>
         );
     };
 }

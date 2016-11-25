@@ -15,7 +15,6 @@ module.exports = env =>  {
             'react-hot-loader/patch',
             'webpack-dev-server/client?http://localhost:3000',
             'webpack/hot/only-dev-server',
-            'webpack/hot/dev-server',
             './bootstrap.js'
         ],
 
@@ -23,7 +22,7 @@ module.exports = env =>  {
             filename: 'bundle.js',
             path: resolve('dist'),
         },
-        devtool: ifProd('source-map', 'eval'),
+        devtool: 'inline-source-map',
         module: {
             loaders: [
                 {
@@ -41,7 +40,6 @@ module.exports = env =>  {
             })
         ],
         devServer: {
-            inline: false,
             port: 3000,
             hot: true
         }
