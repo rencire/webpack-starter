@@ -7,25 +7,25 @@ import App from './App'
 
 const e = React.createElement
 
-const rootEl = document.getElementById('root');
+const rootEl = document.getElementById('root')
 
 ReactDom.render(
-    e(AppContainer, null,
-        e(App)
-    ),
+    <AppContainer>
+        <App />
+    </AppContainer>,
     rootEl
-)
+);
 
 if (module.hot) {
   module.hot.accept('./App', (err) => {
-    ReactDom.render(
-        e(AppContainer, null,
-            e(App)
-        ),
-        rootEl
-    )
-  })
-} else {
-  console.info('❌  HMR Not Supported.')
+      console.log('in hot accept')
+      const NextApp = require('./App').default;
+      ReactDOM.render(
+          <AppContainer>
+              <NextApp />
+          </AppContainer>,
+          rootEl
+      );
+    })
 }
 

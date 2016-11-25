@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from 'react'
-
+import Counter from './Counter'
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,
 // only synchronous routes are hot reloaded, and
@@ -17,8 +17,10 @@ export default class App extends Component {
 
     render() {
         return (
-           e('div', null,  'a', e('h1', null, 'dsfdfs'))
-
-        )
-    }
+            <div style={{fontSize: 13}}>
+            React tesdsfdft exampfdfsfsds adsfdf.
+                <Counter />
+            </div>
+        );
+    };
 }
