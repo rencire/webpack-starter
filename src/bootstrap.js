@@ -5,10 +5,8 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
-const comp = (
-    div(null,
-        h1(null, 'first comp')
-    )
-)
+const e = React.createElement
+
+const comp = e('div', null, 'Hello World')
 
 ReactDom.render(comp, document.getElementById('App'))

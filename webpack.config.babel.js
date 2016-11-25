@@ -2,6 +2,7 @@ import {resolve} from 'path'
 import webpackValidator from 'webpack-validator'
 import {getIfUtils} from 'webpack-config-utils'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ProgressBarPlugin from 'progress-bar-webpack-plugin'
 
 export default env =>  {
     const {ifProd} = getIfUtils(env)
@@ -24,6 +25,7 @@ export default env =>  {
             ],
         },
         plugins: [
+            new ProgressBarPlugin(),
             new HtmlWebpackPlugin({
                 template: 'index.html'
             })

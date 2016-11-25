@@ -27,6 +27,7 @@
     "html-webpack-plugin": "^2.24.1",
     "http-server": "^0.9.0",
     "npm-run-all": "^3.1.1",
+    "progress-bar-webpack-plugin": "^1.9.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "rimraf": "^2.5.4",
@@ -34,5 +35,9 @@
     "webpack-config-utils": "^2.1.0",
     "webpack-dev-server": "^2.1.0-beta.0",
     "webpack-validator": "^2.2.9"
+  },
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
   }
 }
