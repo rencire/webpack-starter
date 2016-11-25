@@ -1,26 +1,31 @@
 /* eslint no-console:0 */
 
-import handleLoad from './app'
+import { AppContainer } from 'react-hot-loader'
+import React from 'react'
+import ReactDom from 'react-dom'
+import App from './App'
 
-//
-const reloading = document.readyState === 'complete'
+const e = React.createElement
+
+const rootEl = document.getElementById('root');
+
+ReactDom.render(
+    e(AppContainer, null,
+        e(App)
+    ),
+    rootEl
+)
+
 if (module.hot) {
-  module.hot.accept(function(err) {
-    console.log('❌  HMR Error:', err)
+  module.hot.accept('./App', (err) => {
+    ReactDom.render(
+        e(AppContainer, null,
+            e(App)
+        ),
+        rootEl
+    )
   })
-  if (reloading) {
-    console.log('🔁  HMR Reloading.')
-    handleLoad()
-  } else {
-    console.info('✅  HMR Enabled.')
-    bootstrap()
-  }
 } else {
   console.info('❌  HMR Not Supported.')
-  bootstrap()
 }
 
-function bootstrap() {
-  window.addEventListener('load', handleLoad)
-  window.addEventListener('hashchange', handleLoad)
-}
