@@ -1,12 +1,26 @@
-/**
- * Created by Eric Ren on 11/24/16.
- */
+/* eslint no-console:0 */
 
-import React from 'react'
-import ReactDom from 'react-dom'
+import handleLoad from './app'
 
-const e = React.createElement
+//
+const reloading = document.readyState === 'complete'
+if (module.hot) {
+  module.hot.accept(function(err) {
+    console.log('❌  HMR Error:', err)
+  })
+  if (reloading) {
+    console.log('🔁  HMR Reloading.')
+    handleLoad()
+  } else {
+    console.info('✅  HMR Enabled.')
+    bootstrap()
+  }
+} else {
+  console.info('❌  HMR Not Supported.')
+  bootstrap()
+}
 
-const comp = e('div', null, 'Hello World')
-
-ReactDom.render(comp, document.getElementById('App'))
+function bootstrap() {
+  window.addEventListener('load', handleLoad)
+  window.addEventListener('hashchange', handleLoad)
+}
