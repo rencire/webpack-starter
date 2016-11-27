@@ -3,8 +3,12 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const webpackValidator = require('webpack-validator')
+const {getIfUtils} = require('webpack-config-utils')
+
 
 module.exports = env =>  {
+    const {ifProd, ifNotProd} = getIfUtils(env)
+
 
     const config = webpackValidator({
         context: resolve('src'),
@@ -19,7 +23,7 @@ module.exports = env =>  {
             filename: 'bundle.js',
             path: resolve('dist'),
         },
-        devtool: 'inline-source-map',
+        devtool: ifProd('source-map', 'eval'),
         module: {
             loaders: [
                 {

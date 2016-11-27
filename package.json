@@ -1,7 +1,7 @@
 {
-  "name": "job_track",
+  "name": "react-proj-boilerplate",
   "version": "0.0.1",
-  "description": "Track your job applications",
+  "description": "sample react project",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "rimraf dist",
