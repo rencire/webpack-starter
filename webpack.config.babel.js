@@ -13,7 +13,6 @@ module.exports = env =>  {
     const config = webpackValidator({
         context: resolve('src'),
         entry: [
-            'react-hot-loader/patch',
             'webpack-dev-server/client?http://localhost:4000',
             'webpack/hot/only-dev-server',
             './bootstrap'
