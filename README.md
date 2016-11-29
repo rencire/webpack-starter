@@ -1,7 +1,8 @@
-# Boilerplate React starter project
+# Boilerplate webpack starter project
 
 - Webpack
 - Babel
+- NPM scripts
 
 
 
